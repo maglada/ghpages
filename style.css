@@ -149,8 +149,9 @@ body {
 
 /* --- МАКЕТ 3. ДЕСКТОП (Більше 1200px) --- */
 @media (min-width: 1200px) {
+    /* ... (Grid-компонування залишається незмінним) ... */
+
     .container {
-        /* Десктоп: Фільтри та галерея у два стовпці */
         display: grid;
         grid-template-columns: 250px 1fr; 
         gap: 30px;
@@ -159,38 +160,55 @@ body {
     }
 
     .recipe-gallery {
-        /* Десктоп: Три карточки в ряд */
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
     }
     
-    /* Десктопна версія: Виконання вимог */
-    
     .recipe-card {
-        display: flex;
-        flex-direction: column;
+        flex-direction: column; 
+        transition: border 0.3s, box-shadow 0.3s; /* Додаємо перехід для краю */
     }
 
-    /* Вимога: Картки мають однакову висоту (забезпечується Grid-контейнером) */
-
-    /* Вимога: Фото завжди однакового розміру (визначаємо фіксовану висоту для обгортки) */
+    /* Вимоги до зображень */
     .card-image-wrapper {
         height: 200px; /* Фіксована висота фото-блоку */
     }
     
-    /* Вимога: Якщо висота фото менше, то фото вирівнюється по верхньому краю */
     .recipe-image {
-        object-fit: cover; /* Забезпечує, що фото заповнює контейнер без спотворення */
-        object-position: top; /* Вирівнювання по верхньому краю */
-        height: 100%; /* Заповнює висоту обгортки */
+        object-fit: cover; 
+        object-position: top; 
+        height: 100%; 
     }
 
-    /* Вимога: Лінія, яка розділяє картку, знаходиться для всіх карток на одному рівні */
-    /* Це досягається завдяки:
-       1. Фіксованій висоті `.card-image-wrapper` (200px).
-       2. Тому, що `.recipe-card` є flex-контейнером (display: flex; flex-direction: column;), що гарантує, що наступний елемент (`.card-content-divider`) починається одразу після нього на фіксованій позиції.
-    */
+    /* --- ЛОГІКА ФІЛЬТРАЦІЇ: Чорно-білий КРАЙ --- */
+
+    /* 1. Загальний стиль: Усі картки в активному режимі фільтрації мають чорно-білий край 
+       (якщо вони не є обраними) */
+    .container.filter-active .recipe-card {
+        /* Чорно-білий край: сіра рамка та тінь */
+        border: 2px solid #6c757d; 
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* 2. Логіка: Якщо активовано клас 'filter-cake-active' -> Торти отримують кольоровий край */
+    .container.filter-cake-active .recipe-card.type-cake,
+    .container.filter-cookie-active .recipe-card.type-cookie,
+    .container.filter-muffin-active .recipe-card.type-muffin {
+        /* Кольоровий край: синя рамка та яскравіша тінь */
+        border: 2px solid #007bff;
+        box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+    }
+
+    /* 3. Опціонально: Можна додатково зробити кнопку на неактивних картках сірою */
+    .container.filter-active .recipe-card .btn-details {
+        background-color: #6c757d;
+    }
+    .container.filter-active .recipe-card.type-cake .btn-details,
+    .container.filter-active .recipe-card.type-cookie .btn-details,
+    .container.filter-active .recipe-card.type-muffin .btn-details {
+        background-color: #007bff;
+    }
     
     /* Футер для десктопа */
     .footer {
