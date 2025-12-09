@@ -3,74 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Галерея Рецептів - Адаптивний Дизайн</title>
+    <title>Тортики & Тістечка</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="header">
-        <h1>Наша Книга Рецептів</h1>
-    </header>
 
-    <div class="container">
-        <aside class="filters">
-            <h2>Фільтри</h2>
-            <div class="filter-group">
-                <h3>Калорії:</h3>
-                <input type="range" min="100" max="1000" value="500">
-            </div>
-            <div class="filter-group type-filter">
-                <h3>Тип Виробу (Оберіть один):</h3>
-                <label><input type="radio" name="dessert-type" value="cake" checked> Торти</label>
-                <label><input type="radio" name="dessert-type" value="cookie"> Печиво</label>
-                <label><input type="radio" name="dessert-type" value="muffin"> Мафіни</label>
-            </div>
-        </aside>
+<header class="header">
+    <h1>Тортики <span>&</span> Тістечка</h1>
 
-        <main class="recipe-gallery">
-            <article class="recipe-card">
-                <div class="card-image-wrapper">
-                    <img src="cake.jpg" alt="Зображення рецепту Торт" class="recipe-image">
-                </div>
-                <div class="card-content-divider"></div> <div class="card-content">
-                    <h3 class="recipe-title">Торт "Насолода"</h3>
-                    <p class="recipe-calories">250 ккал / 100г</p>
-                    <p class="recipe-description">Ніжний бісквіт, просочений вершковим кремом та свіжими ягодами.</p>
-                    <a href="#" class="btn-details">Деталі</a>
-                </div>
-            </article>
+    <div class="filters">
+        <button>Пиріг</button>
+        <button>Рулет</button>
+        <button>Сирники</button>
+        <button>Тістечко</button>
+        <button>Торт</button>
+        <button class="reset">Скинути фільтр</button>
+    </div>
+</header>
 
-            <article class="recipe-card selected-type">
-                <div class="card-image-wrapper">
-                    <img src="cookies.jpg" alt="Зображення рецепту Печиво" class="recipe-image">
-                </div>
-                <div class="card-content-divider"></div>
-                <div class="card-content">
-                    <h3 class="recipe-title">Печиво "Шоколадне"</h3>
-                    <p class="recipe-calories">400 ккал / 100г</p>
-                    <p class="recipe-description">Хрустке шоколадне печиво з великими шматочками молочного шоколаду.</p>
-                    <a href="#" class="btn-details">Деталі</a>
-                </div>
-            </article>
+<main class="gallery">
 
-            <article class="recipe-card">
-                <div class="card-image-wrapper">
-                    <img src="muffin.jpg" alt="Зображення рецепту Мафін" class="recipe-image">
-                </div>
-                <div class="card-content-divider"></div>
-                <div class="card-content">
-                    <h3 class="recipe-title">Мафіни з Чорницею</h3>
-                    <p class="recipe-calories">180 ккал / 100г</p>
-                    <p class="recipe-description">Пухкі мафіни зі свіжою чорницею та хрусткою верхівкою.</p>
-                    <a href="#" class="btn-details">Деталі</a>
-                </div>
-            </article>
-        </main>
+    <div class="card">
+        <img src="img1.jpg" alt="">
+        <div class="info">
+            <p><strong>Торт:</strong> Сметанковий</p>
+            <p>Калорії у порції 265 кКал</p>
+        </div>
     </div>
 
-    <footer class="footer">
-        <p class="footer-text mobile-only">Мобільний Футер</p>
-        <p class="footer-text tablet-only">Планшетний Футер</p>
-        <p class="footer-text desktop-only">Десктопний Футер</p>
-    </footer>
+    <div class="card">
+        <img src="img2.jpg" alt="">
+        <div class="info">
+            <p><strong>Тістечко:</strong> Маффін</p>
+            <p>Калорії у порції 305 кКал</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="img3.jpg" alt="">
+        <div class="info">
+            <p><strong>Сирники:</strong> Три ягоди</p>
+            <p>Калорії у порції 450 кКал</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="img4.jpg" alt="">
+        <div class="info">
+            <p><strong>Торт:</strong> Смачний</p>
+            <p>Калорії у порції 523 кКал</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="img5.jpg" alt="">
+        <div class="info">
+            <p><strong>Рулет:</strong> Святковий</p>
+            <p>Калорії у порції 380 кКал</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="img6.jpg" alt="">
+        <div class="info">
+            <p><strong>Пиріг:</strong> Свято у бабусі</p>
+            <p>Калорії у порції 298 кКал</p>
+        </div>
+    </div>
+
+</main>
+
+<footer class="footer">
+    <p>Контакти: <a href="mailto:tortik@smakota.ua">tortik@smakota.ua</a></p>
+    <p>© 2019 Smakota</p>
+</footer>
+
 </body>
 </html>
+    

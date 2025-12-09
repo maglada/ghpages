@@ -1,226 +1,120 @@
-/* --- БАЗОВІ СТИЛІ --- */
-
-body {
-    font-family: sans-serif;
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
-.container {
+body {
+    background: #f5f5f5;
     padding: 20px;
 }
 
-/* Приховуємо футери для інших версій за замовчуванням */
-.footer-text { display: none; }
-
-/* Стилі для картки */
-.recipe-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* HEADER */
+.header {
+    text-align: center;
     margin-bottom: 20px;
-    overflow: hidden;
-    /* Flexbox для компонування всередині картки */
-    display: flex; 
-    flex-direction: column; 
-    height: 100%; /* Важливо для десктопної версії */
 }
 
-.card-image-wrapper {
-    overflow: hidden;
+.header h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
 }
 
-.recipe-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover; /* Забезпечує однаковий вигляд фото */
+.header h1 span {
+    color: #e74c3c;
 }
 
-.card-content-divider {
-    height: 1px;
-    background-color: #ccc;
-}
-
-.card-content {
-    padding: 15px;
-    flex-grow: 1; /* Дозволяє вмісту займати доступний простір */
-    display: flex;
-    flex-direction: column;
-}
-
-.recipe-title {
-    margin-top: 0;
-    color: #333;
-}
-
-.btn-details {
-    margin-top: auto; /* Притискає кнопку до низу */
-    align-self: flex-start;
-    padding: 8px 15px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-
-/* Стилі для фільтрів */
 .filters {
-    padding: 15px;
-    background-color: #e9ecef;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.filters button {
+    padding: 10px;
+    border: none;
+    background: #dde3e8;
     border-radius: 8px;
-    margin-bottom: 20px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-/* Фільтр "Тип Виробу" - імітація "ч/б" */
-.recipe-card:not(.selected-type) .recipe-image {
-    filter: grayscale(100%);
-    opacity: 0.6;
+.filters .reset {
+    background: #c4d0d9;
 }
 
-
-/* --- МАКЕТ 1. МОБІЛЬНІ (375px - 730px) --- */
-/* (Застосовується до 730px, якщо не визначено інше) */
-@media (min-width: 375px) {
-    .container {
-        /* Мобільний: Галерея під фільтрами */
-        display: block; 
-    }
-    .recipe-gallery {
-        /* Мобільний: Карточки в один стовпець */
-        display: grid; 
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    .footer-text.mobile-only {
-        display: block;
-        text-align: center;
-        padding: 10px;
-        background-color: #343a40;
-        color: white;
-    }
+/* MOBILE FIRST — 1 COLUMN */
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
 }
 
-
-/* --- МАКЕТ 2. ПЛАНШЕТИ (730px - 1200px) --- */
-@media (min-width: 730px) and (max-width: 1199px) {
-    .container {
-        /* Планшет: Фільтри та галерея у два стовпці */
-        display: grid;
-        grid-template-columns: 200px 1fr;
-        gap: 20px;
-    }
-
-    .recipe-gallery {
-        /* Планшет: Дві карточки в ряд */
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-
-    /* Футер для планшета */
-    .footer {
-        grid-column: 1 / -1; /* Займає всю ширину */
-        text-align: left;
-        padding: 15px 20px;
-        background-color: #007bff;
-        color: white;
-    }
-    .footer-text.tablet-only {
-        display: block;
-    }
-
-    .recipe-card {
-        flex-direction: row; /* Горизонтальне компонування на планшеті */
-    }
-
-    .card-image-wrapper {
-        width: 40%;
-        max-height: 150px; /* Обмеження висоти для горизонтального макета */
-    }
-
-    .card-content-divider {
-        width: 1px;
-        height: auto;
-    }
+.card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
+.card img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+}
 
-/* --- МАКЕТ 3. ДЕСКТОП (Більше 1200px) --- */
-@media (min-width: 1200px) {
-    /* ... (Grid-компонування залишається незмінним) ... */
+.info {
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
 
-    .container {
-        display: grid;
-        grid-template-columns: 250px 1fr; 
-        gap: 30px;
-        max-width: 1400px;
-        margin: 0 auto;
+.info p:first-child {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* TABLET 730–1200px */
+@media (min-width: 730px) and (max-width: 1200px) {
+    .filters {
+        grid-template-columns: repeat(4, 1fr);
     }
 
-    .recipe-gallery {
-        display: grid;
+    .gallery {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card img {
+        height: 170px;
+    }
+}
+
+/* DESKTOP >1200px */
+@media (min-width: 1200px) {
+
+    .layout {
+        display: grid;
+        grid-template-columns: 1fr 250px;
         gap: 20px;
     }
-    
-    .recipe-card {
-        flex-direction: column; 
-        transition: border 0.3s, box-shadow 0.3s; /* Додаємо перехід для краю */
+
+    .filters {
+        grid-template-columns: 1fr;
+        position: sticky;
+        top: 20px;
     }
 
-    /* Вимоги до зображень */
-    .card-image-wrapper {
-        height: 200px; /* Фіксована висота фото-блоку */
-    }
-    
-    .recipe-image {
-        object-fit: cover; 
-        object-position: top; 
-        height: 100%; 
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
     }
 
-    /* --- ЛОГІКА ФІЛЬТРАЦІЇ: Чорно-білий КРАЙ --- */
+    .card img {
+        height: 160px;
+    }
+}
 
-    /* 1. Загальний стиль: Усі картки в активному режимі фільтрації мають чорно-білий край 
-       (якщо вони не є обраними) */
-    .container.filter-active .recipe-card {
-        /* Чорно-білий край: сіра рамка та тінь */
-        border: 2px solid #6c757d; 
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    }
-    
-    /* 2. Логіка: Якщо активовано клас 'filter-cake-active' -> Торти отримують кольоровий край */
-    .container.filter-cake-active .recipe-card.type-cake,
-    .container.filter-cookie-active .recipe-card.type-cookie,
-    .container.filter-muffin-active .recipe-card.type-muffin {
-        /* Кольоровий край: синя рамка та яскравіша тінь */
-        border: 2px solid #007bff;
-        box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
-    }
-
-    /* 3. Опціонально: Можна додатково зробити кнопку на неактивних картках сірою */
-    .container.filter-active .recipe-card .btn-details {
-        background-color: #6c757d;
-    }
-    .container.filter-active .recipe-card.type-cake .btn-details,
-    .container.filter-active .recipe-card.type-cookie .btn-details,
-    .container.filter-active .recipe-card.type-muffin .btn-details {
-        background-color: #007bff;
-    }
-    
-    /* Футер для десктопа */
-    .footer {
-        grid-column: 1 / -1; 
-        display: flex;
-        justify-content: space-around;
-        padding: 20px;
-        background-color: #333;
-        color: #ddd;
-        border-top: 5px solid #ffc107;
-    }
-    .footer-text.desktop-only {
-        display: block;
-    }
+/* FOOTER */
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #666;
 }
